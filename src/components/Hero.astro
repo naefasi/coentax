@@ -14,14 +14,14 @@ interface Props {
 const { headline, body, primaryCta, secondaryCta } = Astro.props;
 ---
 
-<section id="overview" class="pt-16 pb-4 md:pt-24 md:pb-8 overflow-hidden relative">
-  <div class="content-shell max-w-5xl mx-auto text-center relative z-10 px-4">
+<section id="overview" class="pt-24 pb-12 sm:pb-20 md:pt-32 md:pb-8 overflow-hidden relative">
+  <div class="content-shell max-w-5xl mx-auto text-center relative z-10 px-6 sm:px-4">
     <!-- Headline & Body -->
-    <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-ink leading-[1.1] whitespace-pre-line mx-auto max-w-4xl">
+    <h1 class="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink leading-[1.2] whitespace-pre-line mx-auto max-w-4xl">
       {headline}
     </h1>
     
-    <p class="mt-6 text-sm sm:text-lg md:text-xl text-mute whitespace-pre-line max-w-3xl mx-auto leading-[1.8]">
+    <p class="mt-8 text-[0.9rem] sm:text-lg md:text-xl text-mute whitespace-pre-line max-w-2xl mx-auto leading-[1.8] sm:leading-[1.8] opacity-80">
       {body}
     </p>
 
