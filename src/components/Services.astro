@@ -1,0 +1,87 @@
+---
+const services = [
+  {
+    category: "ADVISORY & REPORTING",
+    title: "Monthly Compliance & Advisory",
+    description: "Ongoing peace of mind with regular <span class='bg-[#ebeae8] px-1 py-[0.15rem] text-ink'>VAT submissions</span>, bookkeeping review, <span class='bg-[#ebeae8] px-1 py-[0.15rem] text-ink'>management reports</span>, and tax guidance.",
+    icon: "/brand/service-advisory.png",
+  },
+  {
+    category: "RECONSTRUCTION",
+    title: "Cleanup Work",
+    description: "Fixing past bookkeeping errors, <span class='bg-[#ebeae8] px-1 py-[0.15rem] text-ink'>VAT corrections</span>, rebuilding records from <span class='bg-[#ebeae8] px-1 py-[0.15rem] text-ink'>bank statements</span>, and audit preparation.",
+    icon: "/brand/service-cleanup.png",
+  },
+  {
+    category: "TAXATION",
+    title: "Tax Services",
+    description: "Complete handling of <span class='bg-[#ebeae8] px-1 py-[0.15rem] text-ink'>Personal income tax (ITR12)</span>, <span class='bg-[#ebeae8] px-1 py-[0.15rem] text-ink'>Provisional tax (IRP6)</span>, and <span class='bg-[#ebeae8] px-1 py-[0.15rem] text-ink'>Company tax (ITR14)</span>.",
+    icon: "/brand/service-tax.png",
+  },
+  {
+    category: "RESOLUTION",
+    title: "SARS Problem Solving",
+    description: "Resolving complex issues including <span class='bg-[#ebeae8] px-1 py-[0.15rem] text-ink'>Notice of Objections (NOO, ADR1)</span>, penalty disputes, and payment arrangements.",
+    icon: "/brand/service-resolution.png",
+  }
+];
+---
+
+<section id="services" class="pt-6 md:pt-10 pb-12 md:pb-16 bg-[#faf9f6]">
+  <div class="content-shell max-w-[1200px] mx-auto">
+    <!-- Header & Video Split -->
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-12 mb-12 md:mb-16">
+      <div class="max-w-xl lg:max-w-2xl">
+        <p class="text-[0.7rem] font-bold tracking-[0.15em] text-mute mb-4 uppercase">Services</p>
+        <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold text-ink leading-[1.1] mb-6 tracking-tight">
+          Solving compliance risks and financial disorganization
+        </h2>
+        <p class="text-[1.1rem] text-mute leading-relaxed">
+          I help business owners stay compliant with SARS, fix messy financials, and improve cash flow through proper VAT structuring and monthly reporting.
+        </p>
+      </div>
+      
+      <div class="w-full lg:w-auto shrink-0">
+        <video 
+          src="/video.webm" 
+          autoplay 
+          loop 
+          muted 
+          playsinline 
+          class="w-full max-w-[400px] lg:max-w-[500px] rounded-xl mix-blend-multiply opacity-90 mx-auto lg:mx-0 object-cover"
+        ></video>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {services.map((service) => (
+        <div class="bg-white rounded-sm p-6 md:p-8 transition-colors duration-300 group">
+          <img src={service.icon} alt={service.title} class="w-10 h-10 md:w-14 md:h-14 mb-6 mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity" loading="lazy" />
+          <p class="text-[0.65rem] font-bold tracking-[0.15em] text-mute mb-4 uppercase">{service.category}</p>
+          <h3 class="text-lg md:text-xl font-bold text-ink mb-3 tracking-tight group-hover:text-brand transition-colors">{service.title}</h3>
+          <p class="text-[0.95rem] md:text-[1rem] text-mute leading-loose" set:html={service.description}></p>
+        </div>
+      ))}
+
+      <!-- Highlight CTA Card -->
+      <div class="bg-brand rounded-sm p-6 md:p-8 text-white flex flex-col justify-between items-start md:col-span-2 lg:col-span-1 transition-all duration-300">
+        <svg class="w-8 h-8 md:w-10 md:h-10 text-white/90 mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        <div>
+          <h3 class="text-xl md:text-2xl font-bold mb-3 tracking-tight">Ready to get started?</h3>
+          <p class="text-sm md:text-base text-white/80 leading-relaxed mb-8">
+            Get in touch to learn how we can secure your financial framework and protect your cash flow.
+          </p>
+          <a href="#contact" class="inline-flex items-center gap-2 font-bold text-sm tracking-wide group">
+            Contact Us
+            <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

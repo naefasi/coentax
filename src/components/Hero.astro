@@ -1,0 +1,182 @@
+---
+interface Cta {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  headline: string;
+  body: string;
+  primaryCta: Cta;
+  secondaryCta: Cta;
+}
+
+const { headline, body, primaryCta, secondaryCta } = Astro.props;
+---
+
+<section id="overview" class="pt-20 pb-4 md:pt-32 md:pb-8 overflow-hidden relative">
+  <div class="content-shell max-w-5xl mx-auto text-center relative z-10">
+    <!-- Headline & Body -->
+    <h1 class="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-ink leading-[1.1] whitespace-pre-line mx-auto max-w-4xl">
+      {headline}
+    </h1>
+    
+    <p class="mt-6 text-[1.1rem] md:text-[1.25rem] text-mute whitespace-pre-line max-w-3xl mx-auto leading-relaxed">
+      {body}
+    </p>
+
+    <!-- CTAs -->
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <!-- Primary: dark pill + vivid green icon -->
+      <a
+        href={primaryCta.href}
+        class="inline-flex items-center gap-3 rounded-full bg-[#1c1c1c] text-white pl-6 pr-2 py-2 transition hover:bg-black group"
+      >
+        <span class="font-medium text-[1rem]">{primaryCta.label}</span>
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand text-white transition-transform group-hover:translate-x-1">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </span>
+      </a>
+
+      <!-- Secondary: outlined white pill + arrow -->
+      <a
+        href={secondaryCta.href}
+        class="inline-flex items-center gap-3 rounded-full bg-white border border-line px-8 py-3 transition hover:bg-zinc-50 group"
+      >
+        <span class="font-medium text-ink text-[1rem]">{secondaryCta.label}</span>
+        <svg class="h-4 w-4 text-ink transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Decorative floating cards and dashboard mockup -->
+  <div class="relative w-full max-w-[1200px] mx-auto mt-20 md:mt-32 px-4 h-[500px] md:h-[600px] pointer-events-none">
+    
+    <!-- Left Floating Card -->
+    <div class="absolute left-0 md:left-[5%] top-10 md:top-20 z-20 floating-card bg-white rounded-xl p-4 md:p-5 w-60 md:w-72 -rotate-6 transform hover:rotate-0 transition-transform duration-500">
+      <div class="flex justify-between items-start mb-2">
+        <p class="text-[0.7rem] md:text-sm text-mute font-medium">SARS Audit Risk</p>
+        <div class="flex gap-1">
+          <span class="w-1 h-1 rounded-full bg-zinc-300"></span><span class="w-1 h-1 rounded-full bg-zinc-300"></span><span class="w-1 h-1 rounded-full bg-zinc-300"></span>
+        </div>
+      </div>
+      <div class="flex items-end gap-3 mt-1">
+        <p class="text-2xl md:text-3xl font-bold tracking-tight text-ink">Low</p>
+        <p class="text-xs text-green-500 font-medium mb-1">&darr; 15.23%</p>
+      </div>
+      <div class="mt-4 h-1 w-full bg-zinc-100 rounded-full overflow-hidden">
+        <div class="h-full bg-brand w-[15%]"></div>
+      </div>
+    </div>
+
+    <!-- Center Floating Card -->
+    <div class="absolute left-1/2 -translate-x-1/2 top-0 z-20 md:top-5 floating-card bg-white rounded-xl p-5 md:p-6 w-72 md:w-[380px] rotate-2 transform hover:rotate-0 transition-transform duration-500">
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <p class="text-sm md:text-base font-bold text-ink">VAT Submission in progress</p>
+          <p class="text-xs text-mute mt-1">Viewing current financial period</p>
+        </div>
+        <div class="flex gap-1">
+          <span class="w-1 h-1 rounded-full bg-zinc-300"></span><span class="w-1 h-1 rounded-full bg-zinc-300"></span><span class="w-1 h-1 rounded-full bg-zinc-300"></span>
+        </div>
+      </div>
+      <div class="flex items-center justify-between mb-2 mt-4 mt-6">
+        <div class="h-2 w-full bg-zinc-100 rounded-full overflow-hidden mr-4">
+          <div class="h-full bg-green-500 w-[84%]"></div>
+        </div>
+        <span class="text-xs font-bold text-ink">84%</span>
+      </div>
+    </div>
+
+    <!-- Right Floating Card -->
+    <div class="absolute right-0 md:right-[5%] top-16 md:top-24 z-20 floating-card bg-white rounded-xl p-4 md:p-5 w-64 md:w-80 -rotate-3 transform hover:rotate-0 transition-transform duration-500">
+      <div class="flex justify-between items-center mb-4">
+        <div>
+           <p class="text-sm md:text-base font-bold text-ink">Financial Health Risk</p>
+           <p class="text-[0.65rem] md:text-xs text-mute">Viewing 30 day impact</p>
+        </div>
+        <div class="flex gap-4">
+           <div class="text-center">
+             <p class="text-[0.6rem] text-mute mb-1">Cashflow Gap</p>
+             <div class="w-6 h-6 rounded-full bg-red-100 border border-red-300 mx-auto flex items-center justify-center">
+               <div class="w-2 h-2 rounded-full bg-red-500"></div>
+             </div>
+           </div>
+           <div class="text-center">
+             <p class="text-[0.6rem] text-mute mb-1">Unpaid Tax</p>
+             <div class="w-8 h-8 rounded-full bg-red-50 border border-red-200 mx-auto flex items-center justify-center">
+               <span class="text-[0.55rem] font-bold text-red-500">0%</span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Dashboard UI Window -->
+    <div class="absolute bottom-0 w-full md:w-[94%] left-1/2 -translate-x-1/2 floating-card bg-white/95 backdrop-blur-xl rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 border border-white/40 shadow-2xl h-[350px] md:h-[450px] overflow-hidden">
+      <!-- Dashboard Top Nav -->
+      <div class="flex justify-between items-center border-b border-line/60 pb-6">
+         <div class="flex items-center gap-2">
+           <div class="w-8 h-8 rounded bg-brand text-xl font-black flex items-center justify-center -rotate-12 italic text-white">!</div>
+           <span class="font-bold text-lg md:text-xl">Coentax</span>
+         </div>
+         <div class="hidden lg:flex gap-6 text-sm font-medium text-mute">
+           <span class="text-ink border-b-2 border-ink pb-1">Overview</span>
+           <span>Tax Strategy</span>
+           <span>Management Accounts</span>
+           <span>VAT Health</span>
+         </div>
+         <div class="flex gap-4 items-center">
+           <div class="w-8 h-8 rounded-full bg-zinc-100"></div>
+           <div class="w-8 h-8 rounded-full bg-zinc-100"></div>
+           <div class="w-8 h-8 rounded-full bg-zinc-800"></div>
+         </div>
+      </div>
+      
+      <!-- Dashboard Content -->
+      <div class="mt-8 flex flex-col md:flex-row gap-10 md:items-center">
+        <div class="md:w-1/3 space-y-2">
+          <h2 class="text-2xl md:text-3xl font-bold text-ink">Financial Health Overview</h2>
+          <p class="text-sm text-mute leading-relaxed max-w-sm">Summary of your active business accounting metrics across the last 30 days, quarter, and fiscal year.</p>
+        </div>
+        
+        <div class="md:w-2/3 flex gap-2 sm:gap-4 overflow-hidden">
+          <div class="bg-[#fcfaf7] p-3 md:p-5 rounded-xl border border-line flex-1 min-w-0">
+            <p class="text-[0.6rem] md:text-xs text-mute mb-1 text-right">&nearr;</p>
+            <p class="text-xl md:text-3xl font-bold text-ink tracking-tight mb-1 md:mb-2 truncate">R432K</p>
+            <p class="text-[0.6rem] md:text-xs text-mute font-medium text-right truncate">Available Cash</p>
+          </div>
+          <div class="bg-[#fcfaf7] p-3 md:p-5 rounded-xl border border-line flex-1 min-w-0">
+            <p class="text-[0.6rem] md:text-xs text-mute mb-1 text-right">&nearr;</p>
+            <p class="text-xl md:text-3xl font-bold text-ink tracking-tight mb-1 md:mb-2 truncate">14<span class="text-[0.7rem] md:text-lg"> days</span></p>
+            <p class="text-[0.6rem] md:text-xs text-mute font-medium text-right truncate">Debtor Days</p>
+          </div>
+          <div class="bg-[#fcfaf7] p-3 md:p-5 rounded-xl border border-line flex-1 min-w-0">
+            <p class="text-[0.6rem] md:text-xs text-mute mb-1 text-right">&nearr;</p>
+            <p class="text-xl md:text-3xl font-bold text-ink tracking-tight mb-1 md:mb-2 truncate">100<span class="text-[0.7rem] md:text-lg">%</span></p>
+            <p class="text-[0.6rem] md:text-xs text-mute font-medium text-right truncate">SARS Compliance</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-10 h-32 w-full bg-gradient-to-t from-zinc-50 to-transparent flex items-end gap-2 px-4 rounded-b-xl border border-zinc-100">
+         <div class="w-1/12 bg-zinc-200 h-[20%] rounded-t-sm"></div>
+         <div class="w-1/12 bg-zinc-200 h-[35%] rounded-t-sm"></div>
+         <div class="w-1/12 bg-zinc-200 h-[25%] rounded-t-sm"></div>
+         <div class="w-1/12 bg-zinc-200 h-[50%] rounded-t-sm"></div>
+         <div class="w-1/12 bg-zinc-200 h-[45%] rounded-t-sm"></div>
+         <div class="w-1/12 bg-brand h-[80%] rounded-t-sm"></div>
+         <div class="w-1/12 bg-zinc-200 h-[65%] rounded-t-sm"></div>
+         <div class="w-1/12 bg-zinc-200 h-[55%] rounded-t-sm"></div>
+         <div class="w-1/12 bg-zinc-200 h-[45%] rounded-t-sm"></div>
+         <div class="w-1/12 bg-zinc-200 h-[30%] rounded-t-sm"></div>
+         <div class="w-1/12 bg-zinc-200 h-[10%] rounded-t-sm"></div>
+         <div class="w-1/12 bg-[#1c1c1c] h-[90%] rounded-t-sm"></div>
+      </div>
+    </div>
+  </div>
+</section>

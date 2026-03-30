@@ -1,0 +1,37 @@
+---
+const members = [
+  { 
+    name: "CIBA Member", 
+    logo: "https://cdn.brandfetch.io/id8zJzl8d8/w/1022/h/647/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1771933501919", 
+    description: "Verified Chartered Institute for Business Accountants member holdng a professional public practice certificate and subject to strict professional standards for years."
+  },
+  { 
+    name: "SAIT Member", 
+    logo: "https://www.thesait.org.za/resource/resmgr/images/SAIT_Logo_Main_2016.png", 
+    description: "Registered Tax Practitioner with the South African Institute of Taxation, ensuring total compliance with SARS standards and continuous professional development."
+  }
+];
+---
+
+<section id="trust" class="pb-16 pt-0 bg-[#faf9f6]">
+  <div class="content-shell max-w-[1200px] mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-12 lg:gap-y-0">
+      {members.map((member) => (
+        <div class="bg-transparent transition-all duration-300 group flex flex-col items-start">
+          <img 
+            src={member.logo} 
+            alt={member.name} 
+            class="h-10 md:h-12 mb-8 grayscale brightness-0 opacity-60 group-hover:opacity-100 transition-opacity" 
+            loading="lazy" 
+          />
+          <div class="space-y-4">
+            <div>
+              <p class="text-[0.65rem] font-bold tracking-[0.15em] text-mute mb-2 uppercase text-mute">Professional Accreditation</p>
+              <h3 class="text-xl md:text-2xl font-bold text-ink tracking-tight group-hover:text-brand transition-colors text-ink">{member.name}</h3>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #ffffff;
+  --color-surface: #ffffff;
+  --color-panel: #fcfcfc;
+  --color-ink: #111111;
+  --color-mute: #666666;
+  --color-line: #eaeaea;
+  --color-brand: #e6004f;
+  
+  --font-sans: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  --font-serif: "Manrope", sans-serif; /* Fallback since we only use sans now */
+}
+
+:root {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+html {
+  background-color: var(--color-canvas);
+}
+
+body {
+  min-height: 100vh;
+  /* subtle grid pattern similar to Fortify design */
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 6rem 6rem;
+  background-position: center top;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a, button {
+  transition: all 200ms ease;
+}
+
+.content-shell {
+  width: min(1400px, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+.floating-card {
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.04);
+}

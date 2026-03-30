@@ -1,0 +1,125 @@
+---
+interface Link {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  links: Link[];
+  ctaLabel: string;
+  ctaHref: string;
+  logoSrc: string;
+  logoAlt: string;
+}
+
+const { links, ctaLabel, ctaHref, logoSrc, logoAlt } = Astro.props;
+---
+
+<header class="z-50 absolute top-0 w-full bg-transparent">
+  <div class="content-shell">
+    <nav class="flex items-center justify-between py-4 md:py-6" aria-label="Primary">
+      
+      <!-- Left: Logo perfectly sized to the newly cropped PNG file -->
+      <a href="/" class="flex items-center shrink-0 transition hover:opacity-80 ml-4 md:ml-8">
+        <img
+          src={logoSrc}
+          alt={logoAlt}
+          class="h-7 md:h-9 w-auto object-contain"
+          loading="eager"
+        />
+      </a>
+
+      <!-- Center: Links -->
+      <div class="hidden md:flex items-center gap-8">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            class="text-[0.95rem] font-medium text-mute hover:text-ink transition-colors"
+          >
+            {link.label}
+            {link.label === "All Pages" && (
+                <svg class="inline-block w-4 h-4 ml-1 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            )}
+          </a>
+        ))}
+      </div>
+
+      <!-- Right: CTA -->
+      <div class="flex items-center gap-4">
+        <a
+          href={ctaHref}
+          class="hidden md:flex items-center gap-2 rounded-full bg-ink px-6 py-2.5 text-[0.9rem] font-medium text-white transition hover:bg-zinc-800"
+        >
+          {ctaLabel}
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+
+        <!-- Mobile menu toggle -->
+        <button
+          type="button"
+          class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-toggle
+        >
+          <span class="w-6 h-0.5 bg-ink block transition-transform"></span>
+          <span class="w-6 h-0.5 bg-ink block transition-transform"></span>
+          <span class="w-6 h-0.5 bg-ink block transition-transform"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden border-t border-line/50 bg-white">
+    <div class="content-shell py-8 space-y-6">
+      <div class="flex flex-col gap-4">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="block text-2xl font-bold tracking-tight text-ink transition hover:text-brand"
+              data-mobile-link
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+      <a
+        href={ctaHref}
+        class="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800"
+        data-mobile-link
+      >
+        {ctaLabel}
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  const toggle = document.querySelector("[data-menu-toggle]");
+  const menu = document.querySelector("#mobile-menu");
+  const links = document.querySelectorAll("[data-mobile-link]");
+
+  if (toggle instanceof HTMLButtonElement && menu instanceof HTMLElement) {
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      menu.classList.toggle("hidden", !isOpen);
+    };
+
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      setMenuState(!isOpen);
+    });
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => setMenuState(false));
+    });
+  }
+</script>

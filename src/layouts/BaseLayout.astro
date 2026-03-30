@@ -1,0 +1,28 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Coentax | Solid solutions. Lasting value.",
+  description = "Coentax helps South African business owners stay compliant with SARS, fix messy books, and protect cash flow with smarter reporting and VAT support.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f3ed" />
+  </head>
+  <body class="bg-canvas font-sans text-ink antialiased">
+    <slot />
+  </body>
+</html>
+

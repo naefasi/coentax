@@ -1,0 +1,66 @@
+---
+const tools = [
+  { name: "SARS", icon: "https://cdn.brandfetch.io/idJbyUjtPj/w/302/h/105/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1764526969544" },
+  { name: "CIPC", icon: "https://cdn.brandfetch.io/cipc.co.za" },
+  { name: "Sage", icon: "https://cdn.simpleicons.org/sage/52525b" },
+  { name: "Xero", icon: "https://cdn.brandfetch.io/idvAAbnIRW/id9G6IYSZn.svg?c=1bxid64Mup7aczewSAYMX&t=1662561404525" },
+  { name: "QuickBooks", icon: "https://cdn.simpleicons.org/quickbooks/52525b" },
+  { name: "Zoho", icon: "https://cdn.simpleicons.org/zoho/52525b" }
+];
+---
+
+<section class="py-12 md:py-16 bg-white border-b border-line/40 overflow-hidden">
+  <div class="content-shell max-w-7xl mx-auto px-4">
+    <p class="text-[0.7rem] md:text-sm font-semibold tracking-wide text-mute mb-10 text-center uppercase">
+      Seamlessly integrating with the software you already use
+    </p>
+    
+    <!-- Infinite Scroll Wrapper -->
+    <div class="relative flex overflow-x-hidden group">
+      <div class="animate-marquee whitespace-nowrap flex items-center py-4">
+        {[...tools, ...tools].map((tool) => (
+          <div class="flex items-center gap-4 mx-8 md:mx-16 opacity-50 grayscale transition-all duration-300 hover:grayscale-0 hover:opacity-100 cursor-default">
+            <img src={tool.icon} alt={`${tool.name} Logo`} class="h-6 md:h-8 w-auto object-contain" loading="lazy" />
+            <span class="text-lg md:text-xl font-bold text-zinc-600 tracking-tight">{tool.name}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Secondary Loop for Seamless Scrolling -->
+      <div class="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center py-4">
+        {[...tools, ...tools].map((tool) => (
+          <div class="flex items-center gap-4 mx-8 md:mx-16 opacity-50 grayscale transition-all duration-300 hover:grayscale-0 hover:opacity-100 cursor-default">
+            <img src={tool.icon} alt={`${tool.name} Logo`} class="h-6 md:h-8 w-auto object-contain" loading="lazy" />
+            <span class="text-lg md:text-xl font-bold text-zinc-600 tracking-tight">{tool.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes marquee2 {
+    0% { transform: translateX(50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
+  .animate-marquee2 {
+    animation: marquee2 40s linear infinite;
+  }
+
+  /* Pause animation on hover */
+  .group:hover .animate-marquee,
+  .group:hover .animate-marquee2 {
+    animation-play-state: paused;
+  }
+</style>

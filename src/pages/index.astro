@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import NavBar from "../components/NavBar.astro";
+import Services from "../components/Services.astro";
+import Tools from "../components/Tools.astro";
+import Trust from "../components/Trust.astro";
+import Reviews from "../components/Reviews.astro";
+
+const navLinks = [
+  { href: "#overview", label: "Overview" },
+  { href: "#services", label: "Services" },
+  { href: "#reviews", label: "Reviews" },
+];
+
+const heroContent = {
+  headline: "Your Trusted Partner in\nComprehensive Tax Compliance",
+  body:
+    "Securing Your Financial World: Your Trusted Partner in SARS Compliance with\nCutting-Edge Solutions for Comprehensive Data & Financial Security.",
+  primaryCta: {
+    href: "#contact",
+    label: "Get Started",
+  },
+  secondaryCta: {
+    href: "#services",
+    label: "Learn More",
+  }
+};
+---
+
+<BaseLayout
+  title="Coentax | Comprehensive Tax Compliance"
+  description="Your trusted partner in SARS compliance, fixing messy books, and improving cash flow for South African business owners."
+>
+  <NavBar
+    links={navLinks}
+    ctaLabel="Get Started"
+    ctaHref="#contact"
+    logoSrc="/brand/coentax-logo-transparent.png"
+    logoAlt="Coentax Logo"
+  />
+
+  <main>
+    <Hero {...heroContent} />
+    <Services />
+    <Trust />
+    <Tools />
+    <Reviews />
+  </main>
+</BaseLayout>
